@@ -1,5 +1,5 @@
-# smart-home
-smart home actions
+# SMART-HOME
+*smart home actions*
 
 ## REFRENCES
 
