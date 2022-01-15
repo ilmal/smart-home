@@ -1,7 +1,7 @@
 # smart-home
 smart home actions
 
-# REFRENCES
+## REFRENCES
 
 **project**
 - https://console.actions.google.com/u/0/
