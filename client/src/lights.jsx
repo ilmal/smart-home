@@ -29,7 +29,6 @@ const Lights = (props) => {
                     defaultValue={slider_value}
                     value={slider_value}
                     aria-label="Temperature"
-                    valueLabelDisplay="auto"
                     className="slider"
                     sx={{
                         background_color: "white",
