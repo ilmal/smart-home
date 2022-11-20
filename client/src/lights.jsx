@@ -25,6 +25,7 @@ const Lights = (props) => {
             </div>
             <div className="slider_container">
                 <Slider
+	    	        step={5}
                     orientation="vertical"
                     defaultValue={slider_value}
                     value={slider_value}

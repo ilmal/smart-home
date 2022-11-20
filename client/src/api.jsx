@@ -3,6 +3,7 @@ const axios = require("axios")
 const BACKEND_URL = "http://192.168.1.247:5000"
 
 const light_switch = (method) => {
+
     const data = new FormData();
     data.append('d', '50');
     data.append('r', '0');
