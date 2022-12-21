@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smart-home-lights
+  labels:
+    app: smart-home-lights
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: smart-home-lights
+  template:
+    metadata:
+      labels:
+        app: smart-home-lights
+    spec:
+      containers:
+      - name: smart-home-lights
+        image: 192.168.3.122:30002/smart-home/lights:latest
+        ports:
+          - port: 367845
+            protocol: TCP
+            targetPort: 16745
+          - port: 367846
+            protocol: TCP
+            targetPort: 5000
+        selector:
+          app: smart-home-lights
+        type: NodePort
