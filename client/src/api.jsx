@@ -1,6 +1,6 @@
 const axios = require("axios")
 
-const BACKEND_URL = "http://192.168.1.247:5000"
+const BACKEND_URL = "http://192.168.1.90:5000"
 
 const light_switch = (method) => {
 
