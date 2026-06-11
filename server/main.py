@@ -221,4 +221,4 @@ if __name__ == "__main__":
     print(f"Clap detection: {'ENABLED' if app.config['CLAP_DETECTION_ENABLED'] else 'DISABLED'}")
     print("=" * 50)
     
-    socketio.run(app, host="0.0.0.0", port=5000, debug=False)
+    socketio.run(app, host="0.0.0.0", port=5000, debug=False, allow_unsafe_werkzeug=True)
