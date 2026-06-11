@@ -2,14 +2,25 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-# Copy application files
-COPY main.py .
+# Install system dependencies for audio processing
+RUN apt-get update && apt-get install -y \
+    libsndfile1 \
+    ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install dependencies
+# Copy application files
+COPY *.py ./
+
+# Install Python dependencies
 RUN pip install --no-cache-dir \
     flask \
     flask-restful \
-    flask-cors
+    flask-cors \
+    flask-socketio \
+    python-socketio \
+    librosa \
+    numpy \
+    soundfile
 
 # Expose Flask port
 EXPOSE 5000

@@ -1,19 +1,23 @@
-version: '3.8'
-
 services:
   server:
     build:
       context: ./server
       dockerfile: Dockerfile
     container_name: smart-home-server
-    ports:
-      - "5000:5000"
-    networks:
-      - smart-home-network
     restart: unless-stopped
     environment:
       - FLASK_APP=main.py
       - FLASK_ENV=production
+      - LIGHT_1_MAC=d8a0113a94b6
+      - LIGHT_1_IP=192.168.1.14
+      - LIGHT_1_PORT=38899
+      - LIGHT_2_MAC=d8a0113a94ec
+      - LIGHT_2_IP=192.168.1.68
+      - LIGHT_2_PORT=38899
+      - LIGHT_3_MAC=d8a011c3f7f5
+      - LIGHT_3_IP=192.168.1.193
+      - LIGHT_3_PORT=38899
+      - CLAP_DETECTION_ENABLED=true
     # Use host network mode to allow UDP communication with local smart lights
     network_mode: host
 
@@ -24,15 +28,11 @@ services:
     container_name: smart-home-client
     ports:
       - "16745:16745"
-    networks:
-      - smart-home-network
     restart: unless-stopped
     environment:
       - BROWSER=none
       - PORT=16745
+      - REACT_APP_API_URL=http://localhost:5000
+      - REACT_APP_WS_URL=ws://localhost:5000
     depends_on:
       - server
-
-networks:
-  smart-home-network:
-    driver: bridge
