@@ -2,6 +2,8 @@
 
 A modern, beautiful smart home control system with double-clap detection to control your smart lights!
 
+**🌐 Live Demo**: [https://lamp.ilmal.se](https://lamp.ilmal.se)
+
 ## Features
 
 ### 🎨 Modern UI
