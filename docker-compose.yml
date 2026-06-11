@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: smart-home-server
+    ports:
+      - "5000:5000"
+    networks:
+      - smart-home-network
+    restart: unless-stopped
+    environment:
+      - FLASK_APP=main.py
+      - FLASK_ENV=production
+    # Use host network mode to allow UDP communication with local smart lights
+    network_mode: host
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: smart-home-client
+    ports:
+      - "16745:16745"
+    networks:
+      - smart-home-network
+    restart: unless-stopped
+    environment:
+      - BROWSER=none
+      - PORT=16745
+    depends_on:
+      - server
+
+networks:
+  smart-home-network:
+    driver: bridge
