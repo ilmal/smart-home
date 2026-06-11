@@ -36,3 +36,12 @@ services:
       - REACT_APP_WS_URL=ws://localhost:5000
     depends_on:
       - server
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: smart-home-tunnel
+    command: tunnel --no-autoupdate run --token eyJhIjoiNWI2NjNiYjNlYjcyZTQxZjY4ZmI2ZDkxYmEwMTY1ZWQiLCJ0IjoiODQwNmIyNzQtNjIyOC00ZTJiLWExZjktYmUyZTNjZjJhNjI0IiwicyI6Ik5ESm1ZakZoTUdNdE1URmlOQzAwT1RRM0xXSXdaamt0WmpReE16UmlPRGMzTmpkaSJ9
+    restart: unless-stopped
+    depends_on:
+      - client
+      - server
